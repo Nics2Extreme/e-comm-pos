@@ -67,7 +67,7 @@ class CartUserResource extends Resource
                 TextColumn::make('quantity'),
                 TextColumn::make('quantityXprice')->label('Price')
                     ->getStateUsing(function (CartUser $record) {
-                        $product = Product::where('id', $record->id)->first();
+                        $product = Product::where('id', $record->product_id)->first();
 
                         $quantity = $record->quantity * $product->selling_price;
 
