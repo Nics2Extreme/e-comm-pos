@@ -2606,6 +2606,83 @@
             "install-path": "../haruncpi/laravel-id-generator"
         },
         {
+            "name": "jaocero/activity-timeline",
+            "version": "v1.2.6",
+            "version_normalized": "1.2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/199ocero/activity-timeline.git",
+                "reference": "cba119b048f7786f5597cd8b5b2648730443b788"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/199ocero/activity-timeline/zipball/cba119b048f7786f5597cd8b5b2648730443b788",
+                "reference": "cba119b048f7786f5597cd8b5b2648730443b788",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "illuminate/contracts": "^10.0|^11.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^7.9",
+                "orchestra/testbench": "^8.0|^9.0",
+                "pestphp/pest": "^2.0",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0"
+            },
+            "time": "2024-03-07T04:45:42+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JaOcero\\ActivityTimeline\\ActivityTimelineServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "JaOcero\\ActivityTimeline\\": "src/",
+                    "JaOcero\\ActivityTimeline\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jay-Are Ocero",
+                    "email": "199ocero@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Add timelines to custom pages or infolist entries effortlessly. Plus, it teams up smoothly with Spatie Activitylog for easy tracking.",
+            "homepage": "https://github.com/jaocero/activity-timeline",
+            "keywords": [
+                "activity-timeline",
+                "filament-infolists",
+                "filamentphp",
+                "jaocero",
+                "laravel",
+                "timeline"
+            ],
+            "support": {
+                "issues": "https://github.com/jaocero/activity-timeline/issues",
+                "source": "https://github.com/jaocero/activity-timeline"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/jaocero",
+                    "type": "github"
+                }
+            ],
+            "install-path": "../jaocero/activity-timeline"
+        },
+        {
             "name": "kirschbaum-development/eloquent-power-joins",
             "version": "3.5.0",
             "version_normalized": "3.5.0.0",

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'f3591ae0d0d632af278312559e7650fe7297fa48',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -544,6 +544,15 @@
                 0 => 'v10.45.1',
             ),
         ),
+        'jaocero/activity-timeline' => array(
+            'pretty_version' => 'v1.2.6',
+            'version' => '1.2.6.0',
+            'reference' => 'cba119b048f7786f5597cd8b5b2648730443b788',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jaocero/activity-timeline',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'kirschbaum-development/eloquent-power-joins' => array(
             'pretty_version' => '3.5.0',
             'version' => '3.5.0.0',
@@ -587,9 +596,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'f3591ae0d0d632af278312559e7650fe7297fa48',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1081,8 +1090,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
