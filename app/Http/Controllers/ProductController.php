@@ -71,8 +71,8 @@ class ProductController extends Controller
             'unit_id' => 'required|integer',
             'storage_id' => 'required|integer',
             'stock' => 'required|integer',
-            'buying_price' => 'required|integer',
-            'selling_price' => 'required|integer',
+            'buying_price' => 'required|integer|not_in:0',
+            'selling_price' => 'required|integer|not_in:0',
         ];
 
         $validatedData = $request->validate($rules);
@@ -140,8 +140,8 @@ class ProductController extends Controller
             'unit_id' => 'required|integer',
             'storage_id' => 'required|integer',
             'stock' => 'required|integer',
-            'buying_price' => 'required|integer',
-            'selling_price' => 'required|integer',
+            'buying_price' => 'required|integer|not_in:0',
+            'selling_price' => 'required|integer|not_in:0',
         ];
 
         $validatedData = $request->validate($rules);

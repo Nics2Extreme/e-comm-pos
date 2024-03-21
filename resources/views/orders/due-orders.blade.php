@@ -9,12 +9,12 @@
                 <div class="col-auto my-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-credit-card"></i></div>
-                        Due Order List
+                        Delivery Order List
                     </h1>
                 </div>
                 <div class="col-auto my-4">
                     <a href="{{ route('pos.index') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Add</a>
-                    <a href="{{ route('order.dueOrders') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
+                    <a href="{{ route('order.deliveryOrders') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
                 <ol class="breadcrumb px-3 py-2 rounded mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('order.allOrders') }}">Orders</a></li>
-                    <li class="breadcrumb-item active">Due Orders</li>
+                    <li class="breadcrumb-item active">Delivery Orders</li>
                 </ol>
             </nav>
         </div>
@@ -53,7 +53,7 @@
         <div class="card-body">
             <div class="row mx-n4">
                 <div class="col-lg-12 card-header mt-n4">
-                    <form action="{{ route('order.dueOrders') }}" method="GET">
+                    <form action="{{ route('order.deliveryOrders') }}" method="GET">
                         <div class="d-flex flex-wrap align-items-center justify-content-between">
                             <div class="form-group row align-items-center">
                                 <label for="row" class="col-auto">Row:</label>
@@ -89,13 +89,13 @@
                         <table class="table table-striped align-middle">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Invoice No</th>
+                                <th scope="col">#</th>
+                                    <th scope="col">Invoice</th>
                                     <th scope="col">@sortablelink('customer.name', 'name')</th>
-                                    <th scope="col">@sortablelink('order_date', 'date')</th>
+                                    <th scope="col">@sortablelink('order_date', 'Date')</th>
                                     <th scope="col">Payment</th>
-                                    <th scope="col">@sortablelink('pay')</th>
-                                    <th scope="col">@sortablelink('due')</th>
+                                    <th scope="col">@sortablelink('total')</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -107,15 +107,13 @@
                                     <td>{{ $order->customer->name }}</td>
                                     <td>{{ $order->order_date }}</td>
                                     <td>{{ $order->payment_type }}</td>
+                                    <td>₱{{ $order->total }}</td>
                                     <td>
-                                        <span class="btn btn-warning btn-sm">₱{{ $order->pay }}</span>
-                                    </td>
-                                    <td>
-                                        <span class="btn btn-danger btn-sm">{{ $order->due }}</span>
+                                        <span class="btn btn-primary btn-sm text-uppercase">{{ $order->order_status }}</span>
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('order.dueOrderDetails', $order->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-money-bill"></i></a>
+                                            <a href="{{ route('order.deliveryOrderDetails', $order->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
                                         </div>
                                     </td>
                                 </tr>

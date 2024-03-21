@@ -72,9 +72,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/complete', [OrderController::class, 'completeOrders'])->name('order.completeOrders');
     Route::get('/orders/complete/{order_id}', [OrderController::class, 'orderDetails'])->name('order.orderCompleteDetails');
     Route::get('/orders/details/{order_id}/download', [OrderController::class, 'downloadInvoice'])->name('order.downloadInvoice');
-    Route::get('/orders/due', [OrderController::class, 'dueOrders'])->name('order.dueOrders');
-    Route::get('/orders/due/pay/{order_id}', [OrderController::class, 'dueOrderDetails'])->name('order.dueOrderDetails');
-    Route::put('/orders/due/pay/update', [OrderController::class, 'updateDueOrder'])->name('order.updateDueOrder');
+    Route::get('/orders/delivery', [OrderController::class, 'deliveryOrders'])->name('order.deliveryOrders');
+    Route::get('/orders/delivery/{order_id}', [OrderController::class, 'deliveryOrderDetails'])->name('order.deliveryOrderDetails');
+    Route::put('/orders/delivery/pay/update', [OrderController::class, 'updateDeliveryOrder'])->name('order.updateDeliveryOrder');
     Route::put('/orders/update', [OrderController::class, 'updateOrder'])->name('order.updateOrder');
 
     // Default Controller

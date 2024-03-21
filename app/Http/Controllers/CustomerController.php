@@ -6,6 +6,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -67,6 +68,11 @@ class CustomerController extends Controller
             $file->storeAs($path, $fileName);
             $validatedData['photo'] = $fileName;
         }
+
+        /** 
+         * Store default password for customer
+         */
+        $validatedData['password'] = Hash::make('customer');
 
         Customer::create($validatedData);
 

@@ -1,4 +1,5 @@
 <section>
+    <!-- Summary of orders -->
     <div class="w-full px-4 md:px-5 mx-auto revieworder">
         <div class="mx-4 md:mx-auto my-20 flex flex-col">
           <div class="main-box border border-gray-200 rounded-xl pt-6 mb-4 max-w-xl max-lg:mx-auto lg:max-w-full">
@@ -70,6 +71,8 @@
           <button id="checkout" type="button" class="{{$total == 0 ? 'disabled' : ''}}focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" {{$total == 0 ? 'disabled' : ''}}>Checkout</button>
         </div>
     </div>
+
+    <!-- Billing button -->
     <div class="billing mx-4 px-4" style="display: none;">
       <h1 class="text-2xl font-bold mb-2">Billing</h1>
       <div id="pay-now"></div>

@@ -27,9 +27,9 @@
                 <div class="nav-link-icon"><i class="fa-solid fa-clock"></i></div>
                 Pending
             </a>
-            <a class="nav-link {{ Request::is('orders/due*') ? 'active' : '' }}" href="{{ route('order.dueOrders') }}">
-                <div class="nav-link-icon"><i class="fa-solid fa-credit-card"></i></div>
-                Due
+            <a class="nav-link {{ Request::is('orders/delivery*') ? 'active' : '' }}" href="{{ route('order.deliveryOrders') }}">
+                <div class="nav-link-icon"><i class="fa-solid fa-truck"></i></div>
+                Delivery
             </a>
             <!-- Sidenav Heading (Purchases)-->
             <div class="sidenav-menu-heading">Purchases</div>

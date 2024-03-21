@@ -78,7 +78,7 @@ class OrderController extends Controller
         ]);
     }
 
-    public function dueOrders()
+    public function deliveryOrders()
     {
         $row = (int) request('row', 10);
 
@@ -86,7 +86,7 @@ class OrderController extends Controller
             abort(400, 'The per-page parameter must be an integer between 1 and 100.');
         }
 
-        $orders = Order::where('due', '>', '0')
+        $orders = Order::where('order_status', 'delivery')
             ->sortable()
             ->paginate($row)
             ->appends(request()->query());
@@ -99,7 +99,7 @@ class OrderController extends Controller
     /**
      * Display an order details.
      */
-    public function dueOrderDetails(String $order_id)
+    public function deliveryOrderDetails(String $order_id)
     {
         $order = Order::where('id', $order_id)->first();
         $orderDetails = OrderDetails::with('product')
@@ -184,7 +184,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Handle update a status order
+     * Handle update for delivery status order
      */
     public function updateOrder(Request $request)
     {
@@ -198,36 +198,39 @@ class OrderController extends Controller
                     ->update(['stock' => DB::raw('stock-'.$product->quantity)]);
         }
 
-        Order::findOrFail($order_id)->update(['order_status' => 'complete']);
+        Order::findOrFail($order_id)->update(['order_status' => 'delivery']);
 
-        return Redirect::route('order.completeOrders')->with('success', 'Order has been completed!');
+        return Redirect::route('order.completeOrders')->with('success', 'Order has been delivered!');
+    }
+
+    /**
+     * Display delivery order details.
+     */
+    public function orderDeliveryDetails(String $order_id)
+    {
+        $order = Order::where('id', $order_id)->first();
+        $orderDetails = OrderDetails::with('product')
+            ->where('order_id', $order_id)
+            ->orderBy('id')
+            ->get();
+
+        return view('orders.details-order', [
+            'order' => $order,
+            'orderDetails' => $orderDetails,
+        ]);
     }
 
     /**
      * Handle update a due pay order
      */
-    public function updateDueOrder(Request $request)
+    public function updateDeliveryOrder(Request $request)
     {
-        $rules = [
-            'id' => 'required|numeric',
-            'pay' => 'required|numeric'
-        ];
+        $order_id = $request->id;
 
-        $validatedData = $request->validate($rules);
-        $order = Order::findOrFail($validatedData['id']);
+        //Update the order status to complete
+        Order::findOrFail($order_id)->update(['order_status' => 'complete']);
 
-        $mainPay = $order->pay;
-        $mainDue = $order->due;
-
-        $paidDue = $mainDue - $validatedData['pay'];
-        $paidPay = $mainPay + $validatedData['pay'];
-
-        Order::findOrFail($validatedData['id'])->update([
-            'due' => $paidDue,
-            'pay' => $paidPay
-        ]);
-
-        return Redirect::route('order.dueOrders')->with('success', 'Due amount has been updated!');
+        return Redirect::route('order.completeOrders')->with('success', 'Order has been completed!');
     }
 
     /**
@@ -272,7 +275,7 @@ class OrderController extends Controller
             $order = Order::create([
                 'customer_id' => $user->id,
                 'order_date' => now()->__toString(),
-                'order_status' => 'complete',
+                'order_status' => 'pending',
                 'total_products' => count($carts),
                 'sub_total' => $total,
                 'total' => $total,

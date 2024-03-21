@@ -113,7 +113,7 @@
                         @csrf
                         <input type="hidden" name="id" value="{{ $order->id }}">
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to complete this order?')">Complete Order</button>
+                        <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to deliver this order?')">Deliver Order</button>
                         <a class="btn btn-primary" href="{{ URL::previous() }}">Back</a>
                     </form>
                     @else

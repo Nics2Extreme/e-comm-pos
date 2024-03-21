@@ -115,12 +115,12 @@
                                             <?php if($order->order_status == "pending") { ?>
                                                 <a href="{{ route('order.orderPendingDetails', $order->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
                                             <?php } ?>
+                                            <?php if($order->order_status == "delivery") { ?>
+                                                <a href="{{ route('order.deliveryOrderDetails', $order->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
+                                            <?php } ?>
                                             <?php if($order->order_status == "complete") { ?>
                                                 <a href="{{ route('order.orderCompleteDetails', $order->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
                                                 <a href="{{ route('order.downloadInvoice', $order->id) }}" class="btn btn-outline-primary btn-sm mx-1"><i class="fa-solid fa-print"></i></a>
-                                            <?php } ?>
-                                            <?php if($order->due > 0) { ?>
-                                                <a href="{{ route('order.dueOrderDetails', $order->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-money-bill"></i></a>
                                             <?php } ?>
                                         </div>
                                     </td>

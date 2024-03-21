@@ -29,6 +29,16 @@ class ViewOrder extends ViewRecord
     public function form(Form $form): Form
     {
         $schema = [
+            ViewField::make('activities')
+                ->view('filament.forms.components.activities')
+                ->formatStateUsing(function (Order $record) { //adds the initial state on page load
+                    $data = Order::where('customer_id', auth()->user()->id)
+                                    ->where('id', $record->id)
+                                    ->get();
+
+                    return $data;
+                })
+                ->columnSpan(2),
             Select::make('customer_id')
                 ->label('Customer')
                 ->native(false)
@@ -44,13 +54,6 @@ class ViewOrder extends ViewRecord
             DateTimePicker::make('order_date')->label('Order Date'),
             ViewField::make('image')
                 ->view('filament.forms.components.order_details')
-                ->formatStateUsing(function (Order $record) { //adds the initial state on page load
-                    $data = OrderDetails::where('order_id', $record->id)->get();
-                    return $data;
-                })
-                ->columnSpan(2),
-            ViewField::make('activities')
-                ->view('filament.forms.components.activities')
                 ->formatStateUsing(function (Order $record) { //adds the initial state on page load
                     $data = OrderDetails::where('order_id', $record->id)->get();
                     return $data;
