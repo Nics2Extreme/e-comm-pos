@@ -15,7 +15,7 @@
 </head>
 
 <body class="antialiased">
-    <div class="hidden mx-auto bg-pink-500 p-4 md:block md:w-auto">
+    <div id="home" class="hidden mx-auto bg-pink-500 p-4 md:block md:w-auto">
         <ul class="font-medium grid grid-cols-3 p-4 md:p-0 rounded-lg text-white">
             <li>
                 <div class="flex justify-center items-center select-none">
@@ -56,6 +56,21 @@
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+                        <a onclick="Home()" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a onclick="Products()" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Products</a>
+                    </li>
+                    <li>
+                        <a onclick="Services()" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+                    </li>
+                    <li>
+                        <a onclick="About()" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+                    </li>
+                    <li>
+                        <a onclick="Contact()" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                    </li>
                     <li>
                         <!-- @if (Route::has('login'))
                         @auth
@@ -177,15 +192,15 @@
                 foreach ($products as $product) {
                 ?>
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="./customer">
+                        <a href="./customer/products">
                             <img class="img-fluid" src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/img/products/default.png') }}">
                         </a>
                         <div class="p-5">
-                            <a href="./customer">
+                            <a href="./customer/products">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $product->product_name }}</h5>
                             </a>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">P {{ $product->selling_price }}</p>
-                            <a href="./customer" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <a href="./customer/products" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Buy Now
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -198,48 +213,48 @@
         </div>
 
         <br>
-        <h3 class="my-6 text-2xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-3xl dark:text-white">
+        <h3 id="products" class="my-6 text-2xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-3xl dark:text-white">
             Product Center</h3>
         <h1 class="my-6 text-3xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-3xl dark:text-white">
             Learn About Our <span class="text-yellow-400">PRODUCTS</span></h1>
         <div class="grid grid-cols-4 gap-4 mx-auto px-2">
-            <a href="./customer" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a href="./customer/products" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('assets/img/landing/awning.jpg') }}" alt="Product" />
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Awnings</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">Learn More ></p>
             </a>
 
-            <a href="./customer" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a href="./customer/products" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('assets/img/landing/cabinet.jpg') }}" alt="Product" />
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Kitchen Cabinets</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">Learn More ></p>
             </a>
 
-            <a href="./customer" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a href="./customer/products" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('assets/img/landing/crdoor.jpg') }}" alt="Product" />
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">CR Doors</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">Learn More ></p>
             </a>
 
-            <a href="./customer" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a href="./customer/products" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('assets/img/landing/screendoor.jpg') }}" alt="Product" />
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Screen Doors</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">Learn More ></p>
             </a>
 
-            <a href="./customer" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a href="./customer/products" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('assets/img/landing/shelf.jpg') }}" alt="Product" />
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Shelf</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">Learn More ></p>
             </a>
 
-            <a href="./customer" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a href="./customer/products" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('assets/img/landing/slidingdoor.jpg') }}" alt="Product" />
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sliding Doors</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">Learn More ></p>
             </a>
 
-            <a href="./customer" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <a href="./customer/products" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('assets/img/landing/slidingwindow.jpg') }}" alt="Product" />
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sliding Window</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">Learn More ></p>
@@ -247,7 +262,7 @@
 
         </div>
         <br>
-        <div class="grid grid-cols-2 gap-4 mt-10">
+        <div id="about" class="grid grid-cols-2 gap-4 mt-10">
             <div class="mx-auto px-4 py-3 text-justify">
                 <h2 class="text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-3xl dark:text-white">
                     About Us</h2>
@@ -301,7 +316,7 @@
             </div>
         </div>
 
-        <div style="background-color: #000000;" class="px-5 py-5">
+        <div id="services" style="background-color: #000000;" class="px-5 py-5">
             <h3 class="my-6 text-2xl text-center font-extrabold leading-none tracking-tight text-yellow-400 md:text-3xl lg:text-3xl dark:text-yellow-400">
                 Services</h3>
             <h1 class="my-6 text-3xl text-center font-extrabold leading-none tracking-tight text-white md:text-3xl lg:text-3xl dark:text-white">
@@ -342,7 +357,7 @@
         </div>
 
         <!-- Newsletter -->
-        <div class="grid grid-cols-2 gap-4">
+        <div id="contact" class="grid grid-cols-2 gap-4">
             <div class="float-left p-5">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-yellow-400">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
@@ -356,6 +371,12 @@
             <div class="p-5">
                 <label for="helper-text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                 <input type="email" id="helper-text" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-400 focus:border-yellow-400 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-400 dark:focus:border-yellow-400" placeholder="email@example.com">
+                <a href="" class="inline-flex items-center  mt-2 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Submit
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </a>
                 <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">We’ll never share your details. Read our <a href="#" class="font-medium text-yellow-400 hover:underline dark:text-yellow-400">Privacy Policy</a>.</p>
 
             </div>
@@ -412,5 +433,12 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.js" integrity="sha512-bUju8VkXhCQgW7zCHSdiIDpECo/lqzChkKrKoc1v2PL2XqO/0Q2Y8dhu07+q6Rk+1c1xr6cfE0VZnumgwy93Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    let Home = () =>document.getElementById('home').scrollIntoView();
+    let Products = () =>document.getElementById('products').scrollIntoView();
+    let Services = () =>document.getElementById('services').scrollIntoView();
+    let About = () =>document.getElementById('about').scrollIntoView();
+    let Contact = () =>document.getElementById('contact').scrollIntoView();
+</script>
 
 </html>

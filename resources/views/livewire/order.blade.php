@@ -58,12 +58,12 @@
             @endforeach
             <div class="w-full border-t border-gray-200 px-6 flex flex-col lg:flex-row items-center justify-between ">
               <div class="flex flex-col sm:flex-row items-center max-lg:border-b border-gray-200">
-                <button class="flex outline-0 py-6 sm:pr-6  sm:border-r border-gray-200 whitespace-nowrap gap-2 items-center justify-center font-semibold group text-lg text-black bg-white transition-all duration-500 hover:text-indigo-600">
+                <a href="./customer/cart-users" class="flex outline-0 py-6 sm:pr-6  sm:border-r border-gray-200 whitespace-nowrap gap-2 items-center justify-center font-semibold group text-lg text-black bg-white transition-all duration-500 hover:text-indigo-600">
                   <svg class="stroke-black transition-all duration-500 group-hover:stroke-indigo-600" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                     <path d="M5.5 5.5L16.5 16.5M16.5 5.5L5.5 16.5" stroke="" stroke-width="1.6" stroke-linecap="round" />
                   </svg>
                   Cancel Order
-                </button>
+                </a>
               </div>
               <p class="font-semibold text-lg text-black py-6">Total Price: <span class="text-indigo-600">{{ $total }}</span></p>
             </div>

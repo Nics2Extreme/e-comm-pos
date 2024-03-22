@@ -80,7 +80,7 @@ class ProductResource extends Resource
                         if (!$check) {
                             return 'Add to cart';
                         } else {
-                            return 'Remove cart';
+                            return 'Remove from cart';
                         }
                     })
                     ->action(function (Product $record) {
@@ -111,11 +111,11 @@ class ProductResource extends Resource
                         }
 
                         Notification::make()
-                            ->title('Successfully!')
+                            ->title('Successfully added to cart!')
                             ->success()
                             ->send();
                     }),
-                Tables\Actions\ViewAction::make(),
+                //Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -135,9 +135,9 @@ class ProductResource extends Resource
     {
         return [
             'index' => Pages\ListProducts::route('/'),
-            'create' => Pages\CreateProduct::route('/create'),
-            'view' => Pages\ViewProduct::route('/{record}'),
-            'edit' => Pages\EditProduct::route('/{record}/edit'),
+            //'create' => Pages\CreateProduct::route('/create'),
+            //'view' => Pages\ViewProduct::route('/{record}'),
+            //'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
 }
