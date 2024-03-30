@@ -77,6 +77,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/orders/delivery/pay/update', [OrderController::class, 'updateDeliveryOrder'])->name('order.updateDeliveryOrder');
     Route::put('/orders/update', [OrderController::class, 'updateOrder'])->name('order.updateOrder');
 
+    Route::get('/orders/report', [OrderController::class, 'salesReport'])->name('orders.salesReport');
+    Route::post('/orders/report/export', [OrderController::class, 'exportSalesReport'])->name('orders.exportSalesReport');
+
     // Default Controller
     Route::get('/get-all-product', [DefaultController::class, 'GetProducts'])->name('get-all-product');
 

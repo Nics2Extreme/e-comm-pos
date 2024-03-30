@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class OrderController extends Controller
 {
@@ -303,5 +305,40 @@ class OrderController extends Controller
             ];
             echo json_encode($array);
         }
+    }
+
+    public function salesReport()
+    {
+        return view('orders.report-order');
+    }
+
+    public function exportSalesReport(Request $request){
+        $rules = [
+            'start_date' => 'required|string|date_format:Y-m-d',
+            'end_date' => 'required|string|date_format:Y-m-d',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $sDate = $validatedData['start_date'];
+        $eDate = $validatedData['end_date'];
+
+        $sales = DB::table('orders')
+            ->whereBetween('order_date',[$sDate,$eDate])
+            ->where('order_status','complete')
+            ->get();
+
+        $options = new Options();
+        $options->set('isRemoteEnabled', true); // Enable loading remote images
+        $options->set("isPhpEnabled", true); //Enable PHP
+        $dompdf = new Dompdf($options);
+
+        $view = view('orders.sales',['sales' => $sales]);
+        $dompdf->loadHtml($view);
+        $dompdf->setPaper('Letter', 'portrait');
+        $dompdf->render();
+        return $dompdf->stream($sDate . ' to ' . $eDate .'.pdf', ['Attachment' => false]);
+
+        
     }
 }
